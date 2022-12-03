@@ -16,7 +16,7 @@ export class Venda {
         this.empresa = params.empresa;
     }
 
-    total() {
+    get total() {
         return this.itemVendas.reduce(
             (total, itemVenda) => total + (itemVenda.produto.preco * itemVenda.qtde), 
             0);

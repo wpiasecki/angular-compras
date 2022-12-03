@@ -17,19 +17,21 @@ export class VendaDatasource {
     vendas = this.mock();
 
     mock(): Venda[] {
+        const getProdutoById = (id: number) => this.produtoDatasource.produtosI.find(p => p.id === id);
+        const getEmpresaById = (id: number) => this.empresaDatasource.empresasI.find(e => e.id === id);
         return [
             new Venda({
-                id: 1,
-                numero: '001',
-                data: new Date(),
-                itemVendas: [
-                    new ItemVenda({
-                        id: 1,
-                        produto: this.produtoDatasource.produtosI.find(p => p.id === 1),
-                        qtde: 9}
-                    )
-                ],
-                empresa: this.empresaDatasource.empresasI.find(e => e.id === 1)
+                id: 1, numero: '001', data: new Date(), empresa: getEmpresaById(1),
+                itemVendas: [ 
+                    new ItemVenda({ id: 1, produto: getProdutoById(1), qtde: 9}),
+                ]
+            }),
+            new Venda({
+                id: 1, numero: '002', data: new Date(), empresa: getEmpresaById(1),
+                itemVendas: [ 
+                    new ItemVenda({ id: 1, produto: getProdutoById(1), qtde: 9}),
+                    new ItemVenda({ id: 1, produto: getProdutoById(2), qtde: 5}),
+                ]
             })
         ]
     }
