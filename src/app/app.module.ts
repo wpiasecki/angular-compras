@@ -9,6 +9,8 @@ import { ListaProdutoComponent } from './produto/lista-produto/lista-produto.com
 import { ListaVendaComponent } from './venda/lista-venda/lista-venda.component';
 import { EditVendaComponent } from './venda/edit-venda/edit-venda.component';
 import { RouterModule } from '@angular/router';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 
 @NgModule({
@@ -27,9 +29,10 @@ import { RouterModule } from '@angular/router';
       { path: 'empresa', component : ListaEmpresaComponent },
       { path: 'produto', component : ListaProdutoComponent },
       { path: 'venda', component : ListaVendaComponent },
-    ])
+    ]),
+    NoopAnimationsModule,
   ],
-  providers: [],
+  providers: [CdkColumnDef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

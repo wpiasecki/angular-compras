@@ -1,1 +1,12 @@
 <p>lista-empresa works!</p>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+    </tr>
+    <tr *ngFor="let empresa of empresas">
+        <td>{{ empresa.nome }}</td>
+        <td>{{ empresa.cnpj }}</td>
+    </tr>
+</table>

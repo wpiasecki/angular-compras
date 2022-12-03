@@ -15,7 +15,7 @@ export class ProdutoService {
   }
 
   save(produto: Produto) {
-    this.produtoDatasource.produtos.push(produto);
+    this.produtoDatasource.produtosI.push(produto);
   }
 
   edit (produto: Produto) {
@@ -23,7 +23,7 @@ export class ProdutoService {
   }
 
   delete(id: number) {
-    this.produtoDatasource.produtos = this.produtoDatasource.produtos.filter(p => p.id !== id);
+    this.produtoDatasource.produtosI = this.produtoDatasource.produtosI.filter(p => p.id !== id);
   }
 
 }

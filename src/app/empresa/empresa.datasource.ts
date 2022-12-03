@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Empresa } from "./empresa.model";
 
 
@@ -7,7 +8,11 @@ import { Empresa } from "./empresa.model";
 })
 export class EmpresaDatasource {
 
-    empresas = this.mock();
+    empresasI = this.mock();
+
+    public get empresas (): Observable<Empresa[]> {
+      return new Observable(o => o.next(this.empresasI));
+    }
 
     mock(): Empresa[] {
         return [

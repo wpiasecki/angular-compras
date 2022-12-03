@@ -1,1 +1,17 @@
 <p>lista-venda works!</p>
+
+
+<table>
+    <tr>
+        <th>Número</th>
+        <th>Data</th>
+        <th>Itens</th>
+        <th>Empresa</th>
+    </tr>
+    <tr *ngFor="let venda of vendas">
+        <td>{{ venda.numero }}</td>
+        <td>{{ venda.data }}</td>
+        <td>{{ venda.itemVendas.length }}</td>
+        <td>{{ venda.empresa.nome }}</td>
+    </tr>
+</table>

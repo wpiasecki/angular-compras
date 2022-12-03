@@ -24,11 +24,12 @@ export class VendaDatasource {
                 data: new Date(),
                 itemVendas: [
                     new ItemVenda({
-                        produto: this.produtoDatasource.produtos.find(p => p.id === 1),
+                        id: 1,
+                        produto: this.produtoDatasource.produtosI.find(p => p.id === 1),
                         qtde: 9}
                     )
                 ],
-                empresa: this.empresaDatasource.empresas.find(e => e.id === 1)
+                empresa: this.empresaDatasource.empresasI.find(e => e.id === 1)
             })
         ]
     }

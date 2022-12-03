@@ -10,7 +10,7 @@ export class EmpresaService {
   constructor(private empresaDatasource: EmpresaDatasource) { }
 
   findById(id: number) {
-    return this.empresaDatasource.empresas.find(empresa => empresa.id === id);
+    return this.empresaDatasource.empresasI.find(empresa => empresa.id === id);
   }
 
   list() {
@@ -18,7 +18,7 @@ export class EmpresaService {
   }
 
   save(empresa: Empresa) {
-    this.empresaDatasource.empresas.push(empresa);
+    this.empresaDatasource.empresasI.push(empresa);
   }
 
   update(empresa: Empresa) {
@@ -26,7 +26,7 @@ export class EmpresaService {
   }
 
   delete(id: number) {
-    this.empresaDatasource.empresas = this.empresaDatasource.empresas.filter(empresa => empresa.id !== id);
+    this.empresaDatasource.empresasI = this.empresaDatasource.empresasI.filter(empresa => empresa.id !== id);
   }
 
 
