@@ -1,12 +1,17 @@
-<p>lista-empresa works!</p>
+
+<button>Nova Empresa</button>
 
 <table>
     <tr>
         <th>Nome</th>
         <th>CNPJ</th>
+        <th>Editar</th>
+        <th>Excluir</th>
     </tr>
     <tr *ngFor="let empresa of empresas">
         <td>{{ empresa.nome }}</td>
         <td>{{ empresa.cnpj }}</td>
+        <td><a><i class="gg-pen"></i></a></td>
+        <td><a><i class="gg-trash"></i></a></td>
     </tr>
 </table>
