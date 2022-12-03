@@ -38,4 +38,8 @@ describe('VendaService', () => {
     
     expect(venda.total()).toEqual(50);
   })
+
+  it('should have one itemVenda', () => {
+    expect(service.list().length).toEqual(1);
+  })
 });
