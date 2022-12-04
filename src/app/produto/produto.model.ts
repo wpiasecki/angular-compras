@@ -5,7 +5,7 @@ export class Produto {
     id: number;
     nome: string;
     preco: number;
-    empresa: Empresa;
+    empresa: Empresa | null;
 
     constructor(params: any) {
         this.id = params.id;

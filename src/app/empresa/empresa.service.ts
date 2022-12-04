@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { getNextId } from '../util';
 import { EmpresaDatasource } from './empresa.datasource';
 import { Empresa } from './empresa.model';
 
@@ -20,17 +21,12 @@ export class EmpresaService {
   save(empresa: Empresa) {
     const empresasI = this.empresaDatasource.empresasI;
     if (!empresa.id) {
-      const maxId = empresasI.reduce((maxId, e) => maxId > e.id ? maxId : e.id, 0);
-      empresa.id = maxId + 1;
+      empresa.id = getNextId(empresasI);
       empresasI.push(empresa);
     } else {
       const index = empresasI.findIndex(e => e.id === empresa.id);
       empresasI[index] = empresa;
     }
-  }
-
-  update(empresa: Empresa) {
-
   }
 
   delete(id: number) {

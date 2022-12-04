@@ -33,20 +33,19 @@ export class EditProdutoComponent {
   ngOnInit() {
     this.empresaService.list().subscribe(empresas => this.empresas = empresas);
     this.produto = this.data.produto;
-    this.form.setValue({
+    this.form.patchValue({
       nome: this.produto.nome || '',
       preco : this.produto.preco || '',
-      empresa: this.produto.empresa
+      empresa: this.produto.empresa?.id || ''
     })
-    
   }
 
   salvar() {
-    if (this.produto.id) {
-      this.produtoService.edit(this.produto);
-    } else {
-      this.produtoService.save(this.produto);
-    }
+    this.produto.nome = this.form.value.nome;
+    this.produto.preco = this.form.value.preco;
+    this.produto.empresa = this.empresaService.findById(parseInt(this.form.value.empresa)) || null;
+
+    this.produtoService.save(this.produto);
     this.dialogRef.close();
   }
 

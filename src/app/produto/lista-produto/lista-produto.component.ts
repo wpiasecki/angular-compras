@@ -18,6 +18,10 @@ export class ListaProdutoComponent {
     private matDialog: MatDialog){}
 
   ngOnInit() {
+    this.listar()
+  }
+
+  listar() {
     this.produtoService.list().subscribe(
       (produtos: Produto[]) => this.produtos = produtos);
   }
@@ -30,7 +34,18 @@ export class ListaProdutoComponent {
   }
 
   confirmarExclusao(produto: Produto) {
+    const mensagem = "Tem certeza de que deseja excluir o produto '" + produto.id + "'?";
+    if (confirm(mensagem)) {
+      this.produtoService.delete(produto.id);
+      this.listar();
+    }
+  }
 
+  novoProduto() {
+    this.matDialog.open(EditProdutoComponent, {
+      width: '600px',
+      data: { produto: new Produto({}) }
+    })
   }
 
 }

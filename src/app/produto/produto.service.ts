@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EmpresaService } from '../empresa/empresa.service';
+import { getNextId } from '../util';
 import { ProdutoDatasource } from './produto.datasource';
 import { Produto } from './produto.model';
 
@@ -15,11 +15,14 @@ export class ProdutoService {
   }
 
   save(produto: Produto) {
-    this.produtoDatasource.produtosI.push(produto);
-  }
-
-  edit (produto: Produto) {
-
+    const produtoI = this.produtoDatasource.produtosI
+    if (produto.id) {
+      const index = produtoI.findIndex(p => p.id === produto.id)
+      produtoI[index] = produto
+    } else {
+      produto.id = getNextId(produtoI);
+      this.produtoDatasource.produtosI.push(produto);
+    }
   }
 
   delete(id: number) {
