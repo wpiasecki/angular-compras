@@ -47,27 +47,7 @@
     font-weight: 600;
   }
 
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
   .content {
-    display: flex;
     margin: 82px auto 32px;
     padding: 0 16px;
     max-width: 960px;
@@ -84,26 +64,6 @@
     margin-right: 8px;
   }
 
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
   a,
   a:visited,
   a:hover {
@@ -113,28 +73,6 @@
 
   a:hover {
     color: #125699;
-  }
-
-
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   }
 
   footer {
@@ -157,34 +95,6 @@
     width: 1920px;
   }
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
 </style>
 
 <head>
@@ -195,17 +105,30 @@
 </head>
 
 
-
 <!-- Toolbar -->
 <div class="toolbar" role="banner"></div>
 
 <div class="content" role="main">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="spacer"></div>
-    <a class="navbar-brand" href="/empresa">Empresa</a>
-    <a class="navbar-brand" href="/produto">Produto</a>
-    <a class="navbar-brand" href="/venda">Venda</a>
+    <a class="navbar-brand" 
+        routerLink="/empresa" 
+        ariaCurrentWhenActive="page"
+        routerLinkActive="activebutton">
+      Empresa
+    </a>
+    <a class="navbar-brand" 
+      routerLink="/produto" 
+      ariaCurrentWhenActive="page"
+      routerLinkActive="activebutton">
+      Produto
+    </a>
+    <a class="navbar-brand" 
+      routerLink="/venda" 
+      ariaCurrentWhenActive="page"
+      routerLinkActive="activebutton">
+      Venda
+    </a>
   </nav>
   
   <router-outlet></router-outlet>

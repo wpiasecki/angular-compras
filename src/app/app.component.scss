@@ -1,0 +1,13 @@
+nav.navbar {
+    padding-left: 1em;
+}
+
+a.navbar-brand {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    &.activebutton {
+        font-weight: bold;
+        border-radius: 0.7em;
+        background-color:  #e0e0e0;
+    }
+}
