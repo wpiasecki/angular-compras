@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { ListaEmpresaComponent } from './empresa/lista-empresa/lista-empresa.component';
@@ -10,7 +11,7 @@ import { ListaVendaComponent } from './venda/lista-venda/lista-venda.component';
 import { EditVendaComponent } from './venda/edit-venda/edit-venda.component';
 import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CdkColumnDef } from '@angular/cdk/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import { CdkColumnDef } from '@angular/cdk/table';
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'empresa', component : ListaEmpresaComponent },
       { path: 'produto', component : ListaProdutoComponent },
@@ -32,7 +36,6 @@ import { CdkColumnDef } from '@angular/cdk/table';
     ]),
     NoopAnimationsModule,
   ],
-  providers: [CdkColumnDef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

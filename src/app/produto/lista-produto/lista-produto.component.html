@@ -13,7 +13,15 @@
         <td>{{produto.nome}}</td>
         <td>{{produto.preco}}</td>
         <td>{{produto.empresa.nome}}</td>
-        <td><a><i class="gg-pen"></i></a></td>
-        <td><a><i class="gg-trash"></i></a></td>
+        <td>
+            <a (click)="abrirModalEditar(produto)">
+                <div><i class="gg-pen"></i></div>
+            </a>
+        </td>
+        <td>
+            <a (click)="confirmarExclusao(produto)">
+                <div><i class="gg-trash"></i></div>
+            </a>
+        </td>
     </tr>
 </table>

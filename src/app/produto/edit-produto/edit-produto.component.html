@@ -1,1 +1,29 @@
-<p>edit-produto works!</p>
+<div>
+    <h3>Produto</h3>
+
+
+    <form [formGroup]="form">
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" formControlName="nome">
+        </div>
+
+        <div>
+            <label for="preco">Preço</label>
+            <input type="text" name="preco" formControlName="preco">
+        </div>
+
+        <div>
+            <label for="empresa">Empresa</label>
+            <select name="empresa" formControlName="empresa">
+                <option *ngFor="let empresa of empresas">
+                    {{ empresa.nome }}
+                </option>
+            </select>
+        </div>
+
+        <input type="button" value="Salvar" (click)="salvar()">
+        <input type="button" value="Cancelar" (click)="cancelar()">
+
+    </form>
+</div>
