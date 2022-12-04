@@ -1,17 +1,25 @@
 
-<button>Nova Empresa</button>
+<button class="btn btn-primary">Nova Empresa</button>
 
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>CNPJ</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-    </tr>
-    <tr *ngFor="let empresa of empresas">
-        <td>{{ empresa.nome }}</td>
-        <td>{{ empresa.cnpj }}</td>
-        <td><a><i class="gg-pen"></i></a></td>
-        <td><a><i class="gg-trash"></i></a></td>
-    </tr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empresa of empresas">
+            <td>{{ empresa.nome }}</td>
+            <td>{{ empresa.cnpj }}</td>
+            <td>
+                <div class="table-action"><i class="gg-pen"></i></div>
+            </td>
+            <td>
+                <div class="table-action"><i class="gg-trash"></i></div>
+            </td>
+        </tr>
+    </tbody>
 </table>

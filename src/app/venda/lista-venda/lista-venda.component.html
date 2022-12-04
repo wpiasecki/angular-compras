@@ -1,23 +1,35 @@
 
-<button>Nova Venda</button>
+<button class="btn btn-primary">Nova Venda</button>
 
-<table>
-    <tr>
-        <th>Número</th>
-        <th>Data</th>
-        <th>Itens</th>
-        <th>Empresa</th>
-        <th>Total</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-    </tr>
-    <tr *ngFor="let venda of vendas">
-        <td>{{ venda.numero }}</td>
-        <td>{{ venda.data }}</td>
-        <td>{{ venda.itemVendas.length }}</td>
-        <td>{{ venda.empresa.nome }}</td>
-        <td>{{ venda.total }}</td>
-        <td><a><i class="gg-pen"></i></a></td>
-        <td><a><i class="gg-trash"></i></a></td>
-    </tr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Número</th>
+            <th scope="col">Data</th>
+            <th scope="col">Itens</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Total</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let venda of vendas">
+            <td>{{ venda.numero }}</td>
+            <td>{{ venda.data }}</td>
+            <td>{{ venda.itemVendas.length }}</td>
+            <td>{{ venda.empresa.nome }}</td>
+            <td>{{ venda.total }}</td>
+            <td>
+                <div class="table-action">
+                    <i class="gg-pen"></i>
+                </div>
+            </td>
+            <td>
+                <div class="table-action">
+                    <i class="gg-trash"></i>
+                </div>
+            </td>
+        </tr>
+    </tbody>
 </table>
