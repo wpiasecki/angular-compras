@@ -8,7 +8,7 @@
 
 * Edição de entidades através de dialog do angular-material
 * Validação de campos obrigatórios
-* Formulário dinâmico para operações com itens em uma venda
+* Formulário dinâmico para operações com itens de uma venda
 
 ## Bibliotecas e frameworks utilizados:
 
@@ -19,6 +19,7 @@
 
 ## Melhorias 
 
-* Validação de CNPJ
+* Máscara e validação de CNPJ
 * Formatação de data
 * Trabalhar em branches no git
+* Não está calculando total de uma venda

@@ -18,7 +18,15 @@ export class EmpresaService {
   }
 
   save(empresa: Empresa) {
-    this.empresaDatasource.empresasI.push(empresa);
+    const empresasI = this.empresaDatasource.empresasI;
+    if (!empresa.id) {
+      const maxId = empresasI.reduce((maxId, e) => maxId > e.id ? maxId : e.id, 0);
+      empresa.id = maxId + 1;
+      empresasI.push(empresa);
+    } else {
+      const index = empresasI.findIndex(e => e.id === empresa.id);
+      empresasI[index] = empresa;
+    }
   }
 
   update(empresa: Empresa) {
@@ -28,6 +36,5 @@ export class EmpresaService {
   delete(id: number) {
     this.empresaDatasource.empresasI = this.empresaDatasource.empresasI.filter(empresa => empresa.id !== id);
   }
-
   
 }
