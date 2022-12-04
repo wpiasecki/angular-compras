@@ -4,7 +4,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-
 $primary: #900;
 $enable-shadows: true;
 $prefix: "mo-";
@@ -28,4 +27,20 @@ div.main-action {
     h2 {
         float: left;
     }
+}
+
+.dialog-form {
+    padding: 1em;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.btn-primary {
+    margin-right: 1em;
+}
+
+.number-input {
+    width: 100px;
 }

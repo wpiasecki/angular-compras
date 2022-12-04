@@ -16,9 +16,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let produto of produtos">
-            <td>{{produto.nome}}</td>
-            <td>{{produto.preco}}</td>
-            <td>{{produto.empresa.nome}}</td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.preco | currency:'BRL' }}</td>
+            <td>{{ produto.empresa.nome }}</td>
             <td class="table-action" (click)="abrirModalEditar(produto)">
                 <div class="table-action">
                     <i class="gg-pen"></i>

@@ -1,1 +1,68 @@
-<p>edit-venda works!</p>
+<div class="dialog-form">
+    <h2>Venda</h2>
+    <form name="vendaForm">
+        <div class="form-group">
+            <label for="numero">Número</label>
+            <input type="number" 
+                required 
+                class="form-control" 
+                name="numero" 
+                id="numero" 
+                [(ngModel)]="venda.numero"
+                #name="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input 
+                type="date" 
+                name="data"
+                class="form-control" 
+                id="data" 
+                [(ngModel)]="venda.data"
+                placeholder="dd-mm-yyyy">
+        </div>
+
+        <div class="form-group item-table">
+            <label for="itemvendas">Itens da venda</label>
+            <table class="table table-striped" id="itemvendas">
+                <thead>
+                    <th>Produto</th>
+                    <th>Qtde</th>
+                    <th>Excluir</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let itemVenda of venda.itemVendas; let indice = index">
+                        <td>
+                            <select 
+                                [name]="'produto'+indice" 
+                                [id]="itemVenda.produto.id" 
+                                [(ngModel)]="itemVenda.produto.id">
+                                <option value="">[Selecione]</option>
+                                <option [value]="produto.id" *ngFor="let produto of produtos">{{ produto.nome }}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input 
+                                [name]="'qtde'+indice" 
+                                type="number" 
+                                required
+                                class="number-input" 
+                                [(ngModel)]="itemVenda.qtde">
+                        </td>
+                        <td (click)="excluirItem(indice)">
+                            <div class="table-action">
+                                <i class="gg-trash"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <input type="button" class="btn btn-primary" (click)="adicionarItem()" value="Adicionar Item">
+        </div>
+
+        <input type="button" class="btn btn-primary" value="Salvar" (click)="salvar()">
+        <input type="button" class="btn btn-secondary" value="Cancelar" (click)="cancelar()">
+    </form>
+</div>

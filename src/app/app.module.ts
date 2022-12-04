@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -13,6 +13,10 @@ import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -25,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditVendaComponent,
   ],
   imports: [
+    
     BrowserModule,
     MatDialogModule,
     FormsModule,
@@ -36,6 +41,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ]),
     NoopAnimationsModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [ 
+    { provide: LOCALE_ID, useValue: 'pt' } 
+  ],
 })
 export class AppModule { }

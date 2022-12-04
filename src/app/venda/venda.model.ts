@@ -6,14 +6,12 @@ export class Venda {
     numero: string;
     data: Date;
     itemVendas: ItemVenda[];
-    empresa: Empresa;
 
     constructor(params: any) {
         this.id = params.id;
         this.numero = params.numero;
         this.data = params.data;
-        this.itemVendas = params.itemVendas;
-        this.empresa = params.empresa;
+        this.itemVendas = params.itemVendas || [];
     }
 
     get total() {

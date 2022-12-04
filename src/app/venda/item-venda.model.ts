@@ -6,7 +6,7 @@ export class ItemVenda {
     qtde: number;
 
     constructor(params: any) {
-        this.produto = params.produto;
+        this.produto = params.produto || {};
         this.qtde = params.qtde;
     }
 }
