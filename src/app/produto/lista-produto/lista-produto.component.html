@@ -1,27 +1,33 @@
 
-<button>Novo Produto</button>
+<p class="text-right">
+    <button class="btn btn-primary">Novo Produto</button>
+</p>
 
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Empresa</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-    </tr>
-    <tr *ngFor="let produto of produtos">
-        <td>{{produto.nome}}</td>
-        <td>{{produto.preco}}</td>
-        <td>{{produto.empresa.nome}}</td>
-        <td>
-            <a (click)="abrirModalEditar(produto)">
-                <div><i class="gg-pen"></i></div>
-            </a>
-        </td>
-        <td>
-            <a (click)="confirmarExclusao(produto)">
-                <div><i class="gg-trash"></i></div>
-            </a>
-        </td>
-    </tr>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let produto of produtos">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>{{produto.empresa.nome}}</td>
+            <td>
+                <a (click)="abrirModalEditar(produto)">
+                    <div><i class="gg-pen"></i></div>
+                </a>
+            </td>
+            <td>
+                <a (click)="confirmarExclusao(produto)">
+                    <div><i class="gg-trash"></i></div>
+                </a>
+            </td>
+        </tr>
+    </tbody>
 </table>
