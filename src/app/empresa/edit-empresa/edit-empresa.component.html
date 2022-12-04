@@ -6,13 +6,20 @@
             <label for="nome">Nome</label>
             <input type="text" class="form-control" name="nome" formControlName="nome">
         </div>
+        <div class="erro" *ngIf="form.get('nome')?.hasError('required') && form.get('nome')?.touched">
+            Nome é necessário
+        </div>
 
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
             <input type="text" class="form-control" name="cnpj" formControlName="cnpj">
         </div>
+        <div class="erro" *ngIf="form.get('cnpj')?.hasError('required') && form.get('cnpj')?.touched">
+            CNPJ é necessário
+        </div>
 
-        <input type="button" class="btn btn-primary" value="Salvar" (click)="salvar()">
+
+        <input type="button" class="btn btn-primary" value="Salvar" (click)="salvar()" [disabled]="!form.valid">
         <input type="button" class="btn btn-secondary" value="Cancelar" (click)="cancelar()">
 
     </form>
