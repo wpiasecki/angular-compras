@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { getNextId } from '../util';
 import { VendaDatasource } from './venda.datasource';
 import { Venda } from './venda.model';
 
@@ -16,10 +17,12 @@ export class VendaService {
 
   save(venda: Venda) {
     if (!venda.id) {
-      const nextId = this.vendaDatasource.vendas.reduce(
-        (maxId, venda) => maxId > venda.id ? maxId : venda.id, 0);
+      const nextId = getNextId(this.vendaDatasource.vendas);
       venda.id = nextId;
       this.vendaDatasource.vendas.push(venda);
+    } else {
+      const index = this.vendaDatasource.vendas.findIndex(v => v.id === venda.id)
+      this.vendaDatasource.vendas[index] = venda;
     }
   }
 

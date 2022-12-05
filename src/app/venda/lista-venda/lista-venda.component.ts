@@ -18,6 +18,10 @@ export class ListaVendaComponent {
     private dialogRef: MatDialog) { }
 
   ngOnInit() {
+    this.listar()
+  }
+
+  listar() {
     this.vendaService.list().subscribe(vendas => this.vendas = vendas);
   }
 
@@ -29,7 +33,10 @@ export class ListaVendaComponent {
   }
 
   confirmarExcluirVenda(venda: Venda) {
-    console.log("not yet implemented");
+    if (confirm("Deseja realmente excluir a venda '" + venda.numero + "'?")) {
+      this.vendaService.delete(venda.id);
+      this.listar()
+    }
   }
 
   novaVenda() {

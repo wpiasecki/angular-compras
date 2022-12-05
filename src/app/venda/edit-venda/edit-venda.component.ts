@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Venda } from '../venda.model';
 import { VendaService } from '../venda.service';
@@ -14,22 +14,62 @@ import { ProdutoService } from 'src/app/produto/produto.service';
 })
 export class EditVendaComponent {
 
+  form;
+  venda = <Venda>{};
   produtos: Produto[] = [];
-  venda: Venda = new Venda({});
 
   constructor(private vendaService: VendaService,
     private dialogRef: MatDialogRef<Venda>,
     private produtoService: ProdutoService,
-    @Inject(MAT_DIALOG_DATA) private data: any) {}
+    private fb : FormBuilder,
+    @Inject(MAT_DIALOG_DATA) private data: any) {
+      this.form = this.buildForm();
+    }
+
+
+  buildForm() {
+    return this.fb.group({
+      numero: ['', Validators.required],
+      data: ['', Validators.required],
+      itens: this.fb.array([])
+    })
+  }
+
+  get itens() {
+    return this.form.controls['itens'] as FormArray;
+  }
 
   ngOnInit() {
     this.venda = this.data.venda;
-    console.log('this.venda', this.venda);
+    
+    const itensControle = this.itens
+    this.venda.itemVendas.forEach(item => {
+      itensControle.push(this.fb.group({
+        produto: [item.produto.id, Validators.required],
+        qtde: [item.qtde, Validators.required]
+      }))
+    })
+
+    this.form.patchValue({
+      numero: this.venda.numero || '',
+      data: this.venda.data?.toString() || '',
+    });
+
     this.produtoService.list().subscribe(produtos => this.produtos = produtos);
   }
 
   salvar() {
-    this.vendaService.save(this.venda);
+    const venda = new Venda({
+      numero: this.form.controls['numero'].value,
+      data: this.form.controls['data'].value,
+      itemVendas: this.itens.controls.map(item => new ItemVenda({
+        produto: this.produtoService.findById(parseInt(item.value.produto)),
+        qtde: item.value.qtde,
+      }))
+    })
+    venda.id = this.venda.id;
+
+    this.vendaService.save(venda);
     this.dialogRef.close();
   }
 
@@ -38,10 +78,13 @@ export class EditVendaComponent {
   }
 
   adicionarItem() {
-    this.venda.itemVendas.push(new ItemVenda({}));
+    this.itens.push(this.fb.group({
+      produto: ['', Validators.required],
+      qtde: ['', Validators.required]
+    }))
   }
 
   excluirItem(indice: number) {
-    this.venda.itemVendas.splice(indice, 1);
+    this.itens.removeAt(indice);
   }
 }

@@ -14,6 +14,10 @@ export class ProdutoService {
     return this.produtoDatasource.produtos;
   }
 
+  findById(id: number) {
+    return this.produtoDatasource.produtosI.find(p => p.id === id)
+  }
+
   save(produto: Produto) {
     const produtoI = this.produtoDatasource.produtosI
     if (produto.id) {
