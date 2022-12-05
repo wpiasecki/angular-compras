@@ -22,4 +22,3 @@
 * Máscara e validação de CNPJ
 * Formatação de data
 * Trabalhar em branches no git
-* Não está calculando total de uma venda
