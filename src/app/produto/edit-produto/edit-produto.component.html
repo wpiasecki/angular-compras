@@ -6,10 +6,16 @@
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" formControlName="nome">
         </div>
+        <div class="erro" *ngIf="form.get('nome')?.hasError('required') && form.get('nome')?.touched">
+            Nome é necessário
+        </div>
 
         <div class="form-group">
             <label for="preco">Preço</label>
             <input type="number" class="form-control" id="preco" formControlName="preco">
+        </div>
+        <div *ngIf="form.get('preco')?.touched">
+            <div class="erro" *ngIf="form.get('preco')?.hasError('required')">Preço é necessário</div>
         </div>
 
         <div class="form-group">
@@ -20,9 +26,11 @@
                 </option>
             </select>
         </div>
+        <div class="erro" *ngIf="form.get('empresa')?.hasError('required') && form.get('empresa')?.touched">
+            Empresa é necessária
+        </div>
 
-
-        <input type="button" class="btn btn-primary" value="Salvar" (click)="salvar()">
+        <input type="button" class="btn btn-primary" value="Salvar" (click)="salvar()" [disabled]="!form.valid">
         <input type="button" class="btn btn-secondary" value="Cancelar" (click)="cancelar()">
 
     </form>
